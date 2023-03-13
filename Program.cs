@@ -8,7 +8,7 @@ namespace CarSelector
         {
             Console.WriteLine("Hello World!");
             Car car = new Car();
-            car.TestMessage();
+            car.CreateCar();
         }
     }
 }
