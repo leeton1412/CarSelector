@@ -11,18 +11,18 @@ namespace CarSelector
 
             int choice = Action();
 
-            while (choice != 1)
-            {
+                while (choice != 1)
+                {
                 try
                 {
+                Statment_Start:
                     switch (choice)
-                    {   
+                    {
                         case 1:
                             Console.WriteLine("See ya!");
-                            continue;
+                            break;
                         case 2:
                             Console.WriteLine("You have Chosen to create a car!");
-
                             string carColor = "";
                             string carMake = "";
                             string carModel = "";
@@ -41,17 +41,33 @@ namespace CarSelector
                             garage.CarList.Add(newCar);
                             // Show the garage
                             showCars(garage);
+                            choice = Action();
                             break;
 
+                        case 3:
+                            foreach (var item in garage.CarList)
+                            {
+                                Console.WriteLine($"Color: {item.Color}");
+                                Console.WriteLine($"Make: {item.Name}");
+                                Console.WriteLine($"Model: {item.Model}");
+                                Console.WriteLine("\r\n");
+                            }
+                            choice = Action();
+                            break;
+                        default:
+                            Console.WriteLine("Invalid Input");
+                            break;
                     }
+
                 }
                 catch (Exception)
                 {
 
                     throw;
                 }
+                }
             }
-        }
+        
 
         public static void showCars(Garage garage)
         {
@@ -68,9 +84,28 @@ namespace CarSelector
         public static int Action()
         {
             int action = 0;
-            Console.WriteLine("Please select from the following: \n Enter 1 to quit.\n Enter 2 to add a car ");
-            action = int.Parse(Console.ReadLine());
-            return action;
+            Number_Needed:
+            Console.WriteLine("Please select from the following: \n Enter 1 to quit.\n Enter 2 to add a car.\n Enter 3 to view our cars ");
+            try
+            {
+                
+                action = int.Parse(Console.ReadLine());
+                if (action == 1 || action == 2 || action == 3)
+                {
+                    return action;
+                }
+                else
+                {
+                    Console.WriteLine("Sorry, that is not a valid option!");
+                    goto Number_Needed;
+                }
+            }
+            catch
+            {
+                Console.WriteLine($"Unfortunatly we need a number!");
+                goto Number_Needed;
+            }
+            
         }
     }
 }

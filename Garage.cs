@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace CarSelector
 {
@@ -13,6 +12,12 @@ namespace CarSelector
         public Garage()
         {
             CarList = new List<CarCreate>();
+            CarList.Add(new CarCreate("Blue", "Nissan", "Z20"));
+            CarList.Add(new CarCreate("Red", "Ford", "Focus"));
+            CarList.Add(new CarCreate("Grey", "Golf", "Polo"));
+            CarList.Add(new CarCreate("Silver", "Vaxh", "Astra"));
         }
+
+
     }
 }
